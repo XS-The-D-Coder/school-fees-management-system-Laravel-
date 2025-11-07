@@ -21,7 +21,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+    public function isAdmin()
+    {
+       return $this->role === 'admin';
+    }
+
+    public function student()
+    {
+       return $this->hasOne(Student::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
